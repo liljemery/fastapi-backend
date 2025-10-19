@@ -1,4 +1,4 @@
-# Foodvery Backend API
+# Base Fastapi Backend
 
 A comprehensive FastAPI-based backend application for the Foodvery platform.
 
