@@ -1,6 +1,6 @@
 # Base Fastapi Backend
 
-A comprehensive FastAPI-based backend application for the Foodvery platform.
+A comprehensive FastAPI-based backend application template for General purpose platforms.
 
 ## Features
 
