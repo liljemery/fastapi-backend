@@ -2,7 +2,7 @@
 Pagination utilities
 """
 from typing import TypeVar, Generic, List
-from pydantic import BaseModel
+from pydantic import BaseModel  # type: ignore[import-untyped]
 
 T = TypeVar('T')
 

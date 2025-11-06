@@ -31,6 +31,10 @@ class Settings(BaseSettings):
     # CORS
     CORS_ORIGINS: list = ["*"]
     
+    # Encryption
+    ENCRYPTION_SALT: str = os.getenv("ENCRYPTION_SALT", "your-encryption-salt-here")
+    INIT_VECTOR: str = os.getenv("INIT_VECTOR", "your-init-vector-here")
+    
     # Email
     SMTP_HOST: Optional[str] = os.getenv("SMTP_HOST")
     SMTP_PORT: Optional[int] = int(os.getenv("SMTP_PORT", 587))
@@ -41,6 +45,13 @@ class Settings(BaseSettings):
         env_file = ".env"
         case_sensitive = True
 
+class EmailConfig:
+    EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
+    EMAIL_PORT = int(os.getenv("EMAIL_PORT", "465"))
+    EMAIL_USER = os.getenv("EMAIL_USER", " ")
+    EMAIL_PASS = os.getenv("EMAIL_PASS", " ")
+
+email_config = EmailConfig()
 
 settings = Settings()
 general_config = Settings()  # Alias for alembic compatibility

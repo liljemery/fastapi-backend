@@ -27,7 +27,8 @@ def hash_password(password: str) -> str:
     Returns:
         Hashed password
     """
-    return pwd_context.hash(password)
+    result = pwd_context.hash(password)
+    return str(result) if result else ""
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -41,7 +42,8 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     Returns:
         True if password matches, False otherwise
     """
-    return pwd_context.verify(plain_password, hashed_password)
+    result = pwd_context.verify(plain_password, hashed_password)
+    return bool(result)
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
@@ -63,7 +65,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
     
     to_encode.update({"exp": expire, "type": "access"})
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
-    return encoded_jwt
+    return str(encoded_jwt)
 
 
 def create_refresh_token(data: dict) -> str:
@@ -80,7 +82,7 @@ def create_refresh_token(data: dict) -> str:
     expire = datetime.utcnow() + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
     to_encode.update({"exp": expire, "type": "refresh"})
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
-    return encoded_jwt
+    return str(encoded_jwt)
 
 
 def decode_token(token: str) -> dict:
@@ -98,7 +100,9 @@ def decode_token(token: str) -> dict:
     """
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        return payload
+        if isinstance(payload, dict):
+            return payload
+        return {}
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

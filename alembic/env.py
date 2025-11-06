@@ -3,7 +3,7 @@ import importlib
 import pkgutil
 from logging.config import fileConfig
 from sqlalchemy import engine_from_config, pool, String # type: ignore
-from alembic import context
+from alembic import context # type: ignore
 from sqlmodel import SQLModel # type: ignore
 import sqlalchemy as sa
 from sqlmodel.sql.sqltypes import AutoString  # type: ignore

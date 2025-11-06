@@ -1,7 +1,7 @@
 """
 Authentication service
 """
-from sqlalchemy.orm import Session
+from sqlmodel import Session, select
 from typing import Optional
 
 from database.models.user import User
@@ -50,7 +50,11 @@ class AuthService:
         Returns:
             User if authentication successful, None otherwise
         """
-        user = db.query(User).filter(User.email == email, User.deleted_at == None).first()
+        statement = select(User).where(
+            User.email == email,
+            User.deleted_at == None
+        )
+        user = db.exec(statement).first()
         if not user:
             return None
         
@@ -62,10 +66,18 @@ class AuthService:
     @staticmethod
     def get_user_by_email(db: Session, email: str) -> Optional[User]:
         """Get user by email"""
-        return db.query(User).filter(User.email == email, User.deleted_at == None).first()
+        statement = select(User).where(
+            User.email == email,
+            User.deleted_at == None
+        )
+        return db.exec(statement).first()
     
     @staticmethod
     def get_user_by_uuid(db: Session, uuid: str) -> Optional[User]:
         """Get user by UUID"""
-        return db.query(User).filter(User.uuid == uuid, User.deleted_at == None).first()
+        statement = select(User).where(
+            User.uuid == uuid,
+            User.deleted_at == None
+        )
+        return db.exec(statement).first()
 

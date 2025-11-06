@@ -1,8 +1,9 @@
 """
 Application factory for creating FastAPI app instance
 """
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI  # type: ignore[import-untyped]
+from fastapi.middleware.cors import CORSMiddleware  # type: ignore[import-untyped]
+from utils.custom_docs import custom_openapi
 from contextlib import asynccontextmanager
 from routes import router as routes_router
 from config import settings
@@ -46,10 +47,12 @@ def create_app() -> FastAPI:
     # Register routes
     register_routes(app)
     
+    app.openapi_schema = custom_openapi(app)
+    
     return app
 
 
-def register_routes(app: FastAPI):
+def register_routes(app: FastAPI) -> None:
     """Register all application routes"""
     app.include_router(routes_router)
     # Health check

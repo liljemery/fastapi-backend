@@ -1,4 +1,3 @@
 """
-SDK package for external service integrations
+SDK package for external service integration
 """
-
