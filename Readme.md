@@ -189,11 +189,7 @@ gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bin
 4. Add tests
 5. Submit a pull request
 
-## License
-
-[Your License Here]
-
 ## Support
 
-For support, email support@foodvery.com or open an issue in the repository.
+For support, email jeremyinoa67@gmail.com or open an issue in the repository.
 
