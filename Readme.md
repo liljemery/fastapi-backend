@@ -5,10 +5,6 @@ A comprehensive FastAPI-based backend application for the Foodvery platform.
 ## Features
 
 - 🔐 **Authentication & Authorization** - JWT-based authentication with refresh tokens
-- 👤 **User Management** - Complete user profile and account management
-- 📦 **Project Management** - Handle projects and deployments
-- 🌐 **Website Management** - Create and manage websites
-- 💳 **Payment Processing** - Integrated payment and subscription system
 - 📧 **Email Services** - Automated email notifications
 - 📊 **Analytics & Monitoring** - Built-in request logging and error tracking
 - 🔗 **URL Shortening** - Custom short URL service
