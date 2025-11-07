@@ -1,6 +1,9 @@
+Le agregue el requerimiento de atribucion a tu LICENSE actual:
 MIT License
 
-Copyright (c) 2025 Jeremy Inoa
+Copyright (c) 2025 Jeremy Inoa (liljemery)
+Email: jeremyinoa67@gmail.com
+GitHub: https://github.com/liljemery
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9,8 +12,13 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1.⁠ ⁠The above copyright notice and this permission notice shall be included
+   in all copies or substantial portions of the Software.
+
+2.⁠ ⁠*Attribution Requirement:* Any application, service, or derivative work
+   that makes use of this Software must provide visible and accessible credit
+   to the original author, Jeremy Inoa (liljemery), and include a link to the
+   original repository: https://github.com/liljemery.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
