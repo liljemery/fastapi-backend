@@ -1,4 +1,3 @@
-Le agregue el requerimiento de atribucion a tu LICENSE actual:
 MIT License
 
 Copyright (c) 2025 Jeremy Inoa (liljemery)
@@ -18,7 +17,7 @@ furnished to do so, subject to the following conditions:
 2.⁠ ⁠*Attribution Requirement:* Any application, service, or derivative work
    that makes use of this Software must provide visible and accessible credit
    to the original author, Jeremy Inoa (liljemery), and include a link to the
-   original repository: https://github.com/liljemery.
+   original repository: https://github.com/liljemery/fastapi-backend.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
