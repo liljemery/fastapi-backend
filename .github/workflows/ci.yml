@@ -66,8 +66,8 @@ jobs:
         run: |
           pytest tests/ -v --tb=short
         env:
-          DATABASE_URL: sqlite+aiosqlite:///:memory:
-          SECRET_KEY: test-secret-key-for-ci-pipeline-only
-          ENVIRONMENT: development
-          DEBUG: true
+          DATABASE_URL: "sqlite+aiosqlite:///:memory:"
+          SECRET_KEY: "test-secret-key-for-ci-pipeline-only"
+          ENVIRONMENT: "development"
+          DEBUG: "true"
 
