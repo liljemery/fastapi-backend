@@ -8,8 +8,6 @@ A comprehensive FastAPI-based backend application template for General purpose p
 - 📧 **Email Services** - Automated email notifications
 - 📊 **Analytics & Monitoring** - Built-in request logging and error tracking
 - 🔗 **URL Shortening** - Custom short URL service
-- 📄 **Template System** - Manage website templates
-- 🎫 **Coupon System** - Discount and promotional codes
 - ☁️ **Cloud Storage** - Integration with DigitalOcean Spaces
 
 ## Tech Stack
