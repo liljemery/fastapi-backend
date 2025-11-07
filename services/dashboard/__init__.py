@@ -1,47 +1,45 @@
 """
-Dashboard services
+Dashboard service
+
+Business logic for dashboard operations
 """
-from sqlmodel import Session, select
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+import logging
+
 from database.models.user import User
-from common.exceptions.dashboard import UserNotFoundError
+from common.exceptions.auth import UserNotFoundException
+
+logger = logging.getLogger(__name__)
 
 
-class DashboardServices:
-    """Service for dashboard operations"""
+class DashboardService:
+    """
+    Dashboard service
     
-    def __init__(self) -> None:
-        self.users = User
+    Handles dashboard-related business logic
+    """
     
-    def get_user_by_uuid(
-        self,
-        user_uuid: str,
-        session: Session
-    ) -> User:
+    @staticmethod
+    async def get_user_by_uuid(db: AsyncSession, user_uuid: str) -> User:
         """
-        Get user by UUID
+        Get user by UUID for dashboard
         
         Args:
+            db: Database session
             user_uuid: User UUID
-            session: Database session
             
         Returns:
             User object
             
         Raises:
-            UserNotFoundError: If user is not found
+            UserNotFoundException: If user not found
         """
-        statement = select(User).where(
-            User.uuid == user_uuid,
-            User.deleted_at == None
-        )
-        query = session.exec(statement)
-        user = query.first()
+        stmt = select(User).where(User.uuid == user_uuid).where(User.deleted_at.is_(None))  # type: ignore[arg-type, union-attr]
+        result = await db.execute(stmt)
+        user = result.scalar_one_or_none()
         
         if not user:
-            raise UserNotFoundError("User not found")
+            raise UserNotFoundException(identifier=user_uuid)
         
         return user
-
-
-dashboard_services = DashboardServices()
-

@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from typing import Optional, Dict, List, Tuple, Union
-from config import email_config
+from config import settings
 
 def send_email(
     *,
@@ -32,8 +32,12 @@ def send_email(
         {"error":  "<message>"}     if any problem occurs
     """
     try:
+        # Validate email credentials
+        if not settings.EMAIL_USER or not settings.EMAIL_PASSWORD:
+            return {"error": "Email credentials not configured"}
+        
         # Set default sender
-        sender = from_email or email_config.EMAIL_USER
+        sender = from_email or settings.EMAIL_USER
 
         # Create message based on whether we have attachments
         msg: Union[MIMEMultipart, EmailMessage]
@@ -77,8 +81,8 @@ def send_email(
 
         # Secure connection and sending
         context = ssl._create_unverified_context()
-        with smtplib.SMTP_SSL(email_config.EMAIL_HOST, email_config.EMAIL_PORT, context=context) as smtp:
-            smtp.login(email_config.EMAIL_USER, email_config.EMAIL_PASS)
+        with smtplib.SMTP_SSL(settings.EMAIL_HOST, settings.EMAIL_PORT, context=context) as smtp:
+            smtp.login(settings.EMAIL_USER, settings.EMAIL_PASSWORD)
             smtp.send_message(msg)
 
         return {"status": "sent"}
